@@ -23,10 +23,10 @@ modules:
       ip_protocol_fallback: false  # no fallback to "ip6"
   icmp:
     prober: icmp
-    timeout: 5s
+    timeout: 10s
     icmp:
       payload_size: 32
       preferred_ip_protocol: "ip4"
-      ttl: 5
+      ttl: 120
       dont_fragment: true
-#      source_ip_address: "127.0.0.1"
+  

@@ -22,7 +22,13 @@ cd monitoring
 docker-compose up
 ```
 
-### Test
+## Configure
+
+Add list of web services to file `prometheus/web_targets.yml`
+
+Add list of servers to file `prometheus/server_targets.yml`
+
+## Test
 
 Go to a browser: https://localhost:3000 to test grafana dashboard.
 

@@ -3,10 +3,9 @@ scrape_configs:
     metrics_path: /probe
     params:
       module: [http_2xx]  # Look for a HTTP 200 response.
-    static_configs:
-      - targets:
-        - https://api.met.no    # Target to probe with http.
-
+    file_sd_configs:
+      - files:
+          - "web_targets.yml"
     relabel_configs:
       - source_labels: [__address__]
         target_label: __param_target
@@ -18,10 +17,9 @@ scrape_configs:
     metrics_path: /probe
     params:
       module: [icmp]
-    static_configs:
-      - targets:
-        - api.met.no    # Target to probe with http.
-
+    file_sd_configs:
+      - files:
+          - "servers_targets.yml"
     relabel_configs:
       - source_labels: [__address__]
         target_label: __param_target

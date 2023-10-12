@@ -28,10 +28,10 @@ services:
       dockerfile: build/blackbox-exporter.Dockerfile
     image: blackbox-exporter-metdpg
     restart: always
-    cap_add:
-      - NET_RAW
-    sysctls:
-      net.ipv4.ping_group_range: "0 2147483647"
+    # cap_add:
+    #   - NET_RAW
+    # sysctls:
+    #   net.ipv4.ping_group_range: "0 2147483647"
     volumes:
       - ./prometheus:/etc/prometheus/
     command:
@@ -51,6 +51,7 @@ services:
     volumes:
       - metdpg_grafana_data:/var/lib/grafana
       - ./grafana/provisioning/:/etc/grafana/provisioning/
+      - ./grafana/dashboards/:/etc/grafana/dashboards/
     env_file:
       - ./grafana/config.monitoring
     ports:
