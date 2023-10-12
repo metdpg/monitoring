@@ -19,7 +19,7 @@ scrape_configs:
       module: [icmp]
     file_sd_configs:
       - files:
-          - "servers_targets.yml"
+          - "server_targets.yml"
     relabel_configs:
       - source_labels: [__address__]
         target_label: __param_target

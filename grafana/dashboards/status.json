@@ -24,7 +24,6 @@
     "editable": true,
     "fiscalYearStartMonth": 0,
     "graphTooltip": 0,
-    "id": 1,
     "links": [],
     "liveNow": false,
     "panels": [
@@ -53,6 +52,8 @@
             },
             "displayName": "${__field.labels[\"instance\"]}",
             "mappings": [],
+            "max": 1,
+            "min": 0,
             "thresholds": {
               "mode": "absolute",
               "steps": [
@@ -61,8 +62,12 @@
                   "value": null
                 },
                 {
-                  "color": "red",
-                  "value": 80
+                  "color": "dark-red",
+                  "value": 0
+                },
+                {
+                  "color": "dark-green",
+                  "value": 1
                 }
               ]
             }
@@ -80,7 +85,7 @@
           "colorMode": "value",
           "graphMode": "area",
           "justifyMode": "auto",
-          "orientation": "auto",
+          "orientation": "horizontal",
           "reduceOptions": {
             "calcs": [
               "lastNotNull"
@@ -98,7 +103,7 @@
               "uid": "P73B2F439FE9A29C9"
             },
             "editorMode": "code",
-            "expr": "up{job=\"blackbox_server\"}",
+            "expr": "probe_success{job=\"blackbox_server\"}",
             "legendFormat": "__auto",
             "range": true,
             "refId": "A"
@@ -132,6 +137,8 @@
             },
             "displayName": "${__field.labels[\"instance\"]}",
             "mappings": [],
+            "max": 1,
+            "min": 0,
             "thresholds": {
               "mode": "absolute",
               "steps": [
@@ -140,8 +147,12 @@
                   "value": null
                 },
                 {
-                  "color": "red",
-                  "value": 80
+                  "color": "dark-red",
+                  "value": 0
+                },
+                {
+                  "color": "dark-green",
+                  "value": 1
                 }
               ]
             }
@@ -159,7 +170,7 @@
           "colorMode": "value",
           "graphMode": "area",
           "justifyMode": "auto",
-          "orientation": "auto",
+          "orientation": "horizontal",
           "reduceOptions": {
             "calcs": [
               "lastNotNull"
@@ -194,13 +205,13 @@
       "list": []
     },
     "time": {
-      "from": "now-6h",
+      "from": "now-5m",
       "to": "now"
     },
     "timepicker": {},
     "timezone": "",
     "title": "Status of servers and services",
     "uid": "ErMUgfMSk",
-    "version": 7,
+    "version": 9,
     "weekStart": ""
   }

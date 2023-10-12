@@ -24,12 +24,11 @@ Create file `prometheus/server_targets.yml` and add list of servers to that file
 ## Run
 
 ```shell
-cd monitoring
 docker-compose up
 ```
 
 ## Test
 
-Go to a browser: https://localhost:3000 to test grafana dashboard.
+Go to a browser: https://localhost:3000 and click into dashboard `Status of servers and services` to test grafana dashboard.
 
 Test blackbox exporter with e.g `http://localhost:9115/probe?target=google.com&module=icmp&debug=true`
