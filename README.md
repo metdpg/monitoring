@@ -1,6 +1,6 @@
 # Monitoring
 
-Docker setup for monitoring of infrastructure and services
+Docker setup for monitoring servers and web services using grafana and prometheus.
 
 ## Install
 
@@ -15,18 +15,18 @@ cd <path to where you want the setup>
 git clone git@github.com:metdpg/monitoring.git
 ```
 
+## Configure
+
+Add list of web services to file `prometheus/web_targets.yml`
+
+Add list of servers to file `prometheus/server_targets.yml`
+
 ## Run
 
 ```shell
 cd monitoring
 docker-compose up
 ```
-
-## Configure
-
-Add list of web services to file `prometheus/web_targets.yml`
-
-Add list of servers to file `prometheus/server_targets.yml`
 
 ## Test
 
