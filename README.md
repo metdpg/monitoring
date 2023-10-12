@@ -17,9 +17,9 @@ git clone git@github.com:metdpg/monitoring.git
 
 ## Configure
 
-Add list of web services to file `prometheus/web_targets.yml`
+Create file `prometheus/web_targets.yml` and add list of web services to that file. Look at `prometheus/web_targets.yml.example` for how to do that.
 
-Add list of servers to file `prometheus/server_targets.yml`
+Create file `prometheus/server_targets.yml` and add list of servers to that file.  Look at `prometheus/server_targets.yml.example` for how to do that.
 
 ## Run
 
