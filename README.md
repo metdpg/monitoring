@@ -6,7 +6,13 @@ Monitoring of servers use ICMP (ping) to check if a server is up.
 
 Monitoring of web servers/web services sends a http request and use a 2xx response to check if a service is up or not.
 
-## Install
+## Usage
+
+Follow the documentation below in the same order as described to install dependencies, download repo, configure and run the system.
+
+### Install dependencies
+
+#### Ubuntu
 
 You need to have `docker`, `docker compose plugin` and `git` installed to use this system.
 
@@ -18,17 +24,28 @@ Install git:
 sudo apt-get install git
 ```
 
+#### MacOS
+
+```shell
+brew install git
+brew install docker
+brew install docker-compose
+```
+
 Versions used for testing setup:
 
 - docker: 24.0.6
 - git: 2.42.0
 
+### Download this repo
+
 ```shell
 cd <path to where you want the setup>
 git clone git@github.com:metdpg/monitoring.git
+cd monitoring
 ```
 
-## Configure
+### Configure
 
 Create file `prometheus/web_targets.yml` and add list of web services to that file. Look at `prometheus/web_targets.yml.example` for how to do that.
 
@@ -36,7 +53,7 @@ Create file `prometheus/server_targets.yml` and add list of servers to that file
 
 Restart the system everytime you make a change to either of these files.
 
-## Run
+### Run
 
 ```shell
 docker compose up -d
