@@ -8,11 +8,20 @@ Monitoring of web servers/web services sends a http request and use a 2xx respon
 
 ## Install
 
+You need to have `docker`, `docker compose plugin` and `git` installed to use this system.
+
+Install `docker` and `docker compose plugin` by following the instructions here: https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository
+
+Install git:
+
 ```shell
-sudo apt-get install docker
-sudo apt-get install docker-compose
 sudo apt-get install git
 ```
+
+Versions used for testing setup:
+
+- docker: 24.0.6
+- git: 2.42.0
 
 ```shell
 cd <path to where you want the setup>
@@ -30,14 +39,14 @@ Restart the system everytime you make a change to either of these files.
 ## Run
 
 ```shell
-docker-compose up -d
+docker compose up -d
 ```
 
 Restart system with:
 
 ```shell
-docker-compose stop
-docker-compose up -d
+docker compose stop
+docker compose up -d
 ```
 
 ## Test
@@ -53,13 +62,13 @@ Test blackbox exporter with e.g `http://localhost:9115/probe?target=google.com&m
 Check that its running:
 
 ```shell
-docker-compose ls
+docker compose ls
 ```
 
 Look at the logs:
 
 ```shell
-docker-compose logs
+docker compose logs
 ```
 
 ### Disk space
@@ -73,7 +82,13 @@ Particularly the metrics volume can become large, so the `/var/lib/docker` disk 
 Regularly, you should restart the service to get new versions of the images. To do that, run the following commands:
 
 ```shell
-docker-compose stop
-docker-compose pull --ignore-buildable
-docker-compose up --force-recreate --build -d
+docker compose stop
+docker compose pull --ignore-buildable
+docker compose up --force-recreate --build -d
+docker image prune
 ```
+
+Type `y` when asked:
+
+>WARNING! This will remove all dangling images.
+Are you sure you want to continue? [y/N]
