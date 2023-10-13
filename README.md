@@ -1,6 +1,10 @@
 # Monitoring
 
-Docker setup for monitoring servers and web services using grafana and prometheus.
+Docker setup for monitoring servers and web servers/web services using grafana and prometheus.
+
+Monitoring of servers use ICMP (ping) to check if a server is up.
+
+Monitoring of web servers/web services sends a http request and use a 2xx response to check if a service is up or not.
 
 ## Install
 
@@ -21,10 +25,19 @@ Create file `prometheus/web_targets.yml` and add list of web services to that fi
 
 Create file `prometheus/server_targets.yml` and add list of servers to that file.  Look at `prometheus/server_targets.yml.example` for how to do that.
 
+Restart the system everytime you make a change to either of these files.
+
 ## Run
 
 ```shell
-docker-compose up
+docker-compose up -d
+```
+
+Restart system with:
+
+```shell
+docker-compose stop
+docker-compose up -d
 ```
 
 ## Test
@@ -32,3 +45,35 @@ docker-compose up
 Go to a browser: https://localhost:3000 and click into dashboard `Status of servers and services` to test grafana dashboard.
 
 Test blackbox exporter with e.g `http://localhost:9115/probe?target=google.com&module=icmp&debug=true`
+
+## Maintenance
+
+### Check status of system
+
+Check that its running:
+
+```shell
+docker-compose ls
+```
+
+Look at the logs:
+
+```shell
+docker-compose logs
+```
+
+### Disk space
+
+The system creates two docker volumes when it starts up for the first time. These two docker volumes contain metrics information and grafana configuration.
+
+Particularly the metrics volume can become large, so the /var/lib/docker disk partition need to have sufficient space allocated. Currently the system is configured to retain metrics for 90 days. Data older than that will be deleted.
+
+### Upgrades
+
+Regularly, you should restart the service to get new versions of the images. To do that, run the following commands:
+
+```shell
+docker-compose stop
+docker-compose pull --ignore-buildable
+docker-compose up --force-recreate --build -d
+```

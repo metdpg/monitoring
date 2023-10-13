@@ -51,7 +51,23 @@
               "mode": "thresholds"
             },
             "displayName": "${__field.labels[\"instance\"]}",
-            "mappings": [],
+            "mappings": [
+              {
+                "options": {
+                  "0": {
+                    "color": "dark-red",
+                    "index": 0,
+                    "text": "Down"
+                  },
+                  "1": {
+                    "color": "dark-green",
+                    "index": 1,
+                    "text": "Up"
+                  }
+                },
+                "type": "value"
+              }
+            ],
             "max": 1,
             "min": 0,
             "thresholds": {
@@ -60,14 +76,6 @@
                 {
                   "color": "green",
                   "value": null
-                },
-                {
-                  "color": "dark-red",
-                  "value": 0
-                },
-                {
-                  "color": "dark-green",
-                  "value": 1
                 }
               ]
             }
@@ -136,7 +144,23 @@
               "mode": "thresholds"
             },
             "displayName": "${__field.labels[\"instance\"]}",
-            "mappings": [],
+            "mappings": [
+              {
+                "options": {
+                  "0": {
+                    "color": "dark-red",
+                    "index": 0,
+                    "text": "Down"
+                  },
+                  "1": {
+                    "color": "dark-green",
+                    "index": 1,
+                    "text": "Up"
+                  }
+                },
+                "type": "value"
+              }
+            ],
             "max": 1,
             "min": 0,
             "thresholds": {
@@ -145,14 +169,6 @@
                 {
                   "color": "green",
                   "value": null
-                },
-                {
-                  "color": "dark-red",
-                  "value": 0
-                },
-                {
-                  "color": "dark-green",
-                  "value": 1
                 }
               ]
             }
@@ -212,6 +228,6 @@
     "timezone": "",
     "title": "Status of servers and services",
     "uid": "ErMUgfMSk",
-    "version": 9,
+    "version": 13,
     "weekStart": ""
   }
