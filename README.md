@@ -66,7 +66,7 @@ docker-compose logs
 
 The system creates two docker volumes when it starts up for the first time. These two docker volumes contain metrics information and grafana configuration.
 
-Particularly the metrics volume can become large, so the /var/lib/docker disk partition need to have sufficient space allocated. Currently the system is configured to retain metrics for 90 days. Data older than that will be deleted.
+Particularly the metrics volume can become large, so the `/var/lib/docker` disk partition need to have sufficient space allocated. Currently the system is configured to retain metrics for 90 days. Data older than that will be deleted.
 
 ### Upgrades
 
