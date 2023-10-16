@@ -54,8 +54,9 @@ services:
       - metdpg_grafana_data:/var/lib/grafana
       - ./grafana/provisioning/:/etc/grafana/provisioning/
       - ./grafana/dashboards/:/etc/grafana/dashboards/
+      - ./grafana/etc/grafana.ini:/etc/grafana/grafana.ini
     env_file:
-      - ./grafana/config.monitoring
+      - ./grafana/env.config
     ports:
       - 3000:3000
     depends_on:

@@ -29,13 +29,12 @@ sudo apt-get install git
 ```shell
 brew install git
 brew install docker
-brew install docker-compose
 ```
 
 Versions used for testing setup:
 
-- docker: 24.0.6
 - git: 2.42.0
+- docker: 24.0.6
 
 ### Download this repo
 
@@ -47,11 +46,20 @@ cd monitoring
 
 ### Configure
 
+#### Servers and services to monitor
+
 Create file `prometheus/web_targets.yml` and add list of web services to that file. Look at `prometheus/web_targets.yml.example` for how to do that.
 
 Create file `prometheus/server_targets.yml` and add list of servers to that file.  Look at `prometheus/server_targets.yml.example` for how to do that.
 
 Restart the system everytime you make a change to either of these files.
+
+#### Authentication
+
+To edit dashboards login with the `admin` user.
+Update `GF_SECURITY_ADMIN_PASSWORD` in the file `grafana/env.config` to set a proper admin password.
+
+To view the dashboards you do not need to login.
 
 ### Run
 
