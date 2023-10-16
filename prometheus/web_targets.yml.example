@@ -1,1 +1,1 @@
-- targets: [ "api.met.no", "127.0.0.1:8080" ]
+- targets: [ "https://api.met.no", "http://www.ethiomet.gov.et/", "http://127.0.0.1:8080"]

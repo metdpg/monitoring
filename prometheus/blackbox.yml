@@ -12,11 +12,7 @@ modules:
       #   Origin: example.com
       follow_redirects: true
       fail_if_ssl: false
-      fail_if_not_ssl: true
-      fail_if_header_matches: # Verifies that no cookies are set
-        - header: Set-Cookie
-          allow_missing: true
-          regexp: '.*'
+      fail_if_not_ssl: false
       tls_config:
         insecure_skip_verify: false
       preferred_ip_protocol: "ip4" # defaults to "ip6"
