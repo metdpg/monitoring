@@ -6,6 +6,10 @@ Monitoring of servers use ICMP (ping) to check if a server is up.
 
 Monitoring of web servers/web services sends a http request and use a 2xx response to check if a service is up or not.
 
+The setup includes a dashboard, `Status of servers and services`, which shows the results of the above mentioned monitoring. You can edit this dashboard, but please note that restarts and future updates will overwrite these changes.
+
+You can also create other dashboards, and these will not be affected by restarts and updates.
+
 ## Usage
 
 Follow the documentation below in the same order as described to install dependencies, download repo, configure and run the system.
