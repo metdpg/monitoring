@@ -121,3 +121,14 @@ Type `y` when asked:
 
 >WARNING! This will remove all dangling images.
 Are you sure you want to continue? [y/N]
+
+### Remove old setup
+
+NB! This will remove all previous metrics data and dashboards.
+
+```shell
+docker compose stop
+docker compose rm
+docker volume rm monitoring_metdpg_grafana_data monitoring_metdpg_prometheus_data
+docker image prune
+```
