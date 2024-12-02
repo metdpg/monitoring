@@ -72,9 +72,3 @@ services:
       - 9093:9093
     profiles: [alertmanager]
 
-  mailserver:
-    image: axllent/mailpit:v1.21
-    restart: 'always'
-    ports:
-      - 1025:1025
-      - 8025:8025
