@@ -58,6 +58,18 @@ Create file `prometheus/server_targets.yml` and add list of servers to that file
 
 Restart the system everytime you make a change to either of these files.
 
+#### Alert configuration
+
+If you want automatic alerts when a server or service becomes unavailable, do the following:
+
+1. Create file `prometheus/alert_rules.yml`. Start by copying `prometheus/alert_rules.yml.example` and replace `<NMHS>` with relevant name.
+2. Create file `prometheus/alertmanager.yml`. Start by copying `prometheus/alertmanager.yml.example` and replace `<NMHS>` with relevant name. Then: 
+    - configure SMTP fields.
+    - set `email_configs` in `receiver` to the desired address to receive alerts on.
+3. If you wish to receive alerts through other channels, see https://prometheus.io/docs/alerting/latest/configuration/#receiver-integration-settings.
+4. Adjust `prometheus/prometheus.yml` by removing `#` from `alerting` and `rules_files` blocks.
+5. Alter docker compose command to: `docker compose --profile alertmanager up -d`
+
 #### Authentication
 
 To edit dashboards login with the `admin` user.

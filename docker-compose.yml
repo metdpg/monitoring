@@ -1,7 +1,5 @@
 # copied and edited from: https://github.com/ninadingole/docker-compose-stacks/blob/master/prometheus-grafana/docker-compose.yml
 
-version: '3.8'
-
 volumes:
   metdpg_prometheus_data: {}
   metdpg_grafana_data: {}
@@ -61,3 +59,22 @@ services:
       - 3000:3000
     depends_on:
       - prometheus
+
+  alertmanager:
+    image: prom/alertmanager
+    restart: always
+    volumes:
+      - ./prometheus:/etc/prometheus/
+      - metdpg_prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/alertmanager.yml'
+    ports:
+      - 9093:9093
+    profiles: [alertmanager]
+
+  mailserver:
+    image: axllent/mailpit:v1.21
+    restart: 'always'
+    ports:
+      - 1025:1025
+      - 8025:8025
