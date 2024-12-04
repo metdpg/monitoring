@@ -37,8 +37,8 @@ brew install docker
 
 Versions used for testing setup:
 
-- git: 2.42.0
-- docker: 24.0.6
+- git: 2.47.1
+- docker: 27.2.1
 
 ### Download this repo
 
@@ -58,6 +58,17 @@ Create file `prometheus/server_targets.yml` and add list of servers to that file
 
 Restart the system everytime you make a change to either of these files.
 
+#### Add automatic alerts
+
+If you want automatic alerts when a server or service becomes unavailable, you must do some additional configuration:
+
+1. Create file `prometheus/alert_rules.yml`. Start by copying `prometheus/alert_rules.yml.example` and replace `<NMHS>` with relevant name.
+2. Create file `prometheus/alertmanager.yml`. Start by copying `prometheus/alertmanager.yml.example` and replace `<NMHS>` with relevant name. Then: 
+    - configure SMTP fields.
+    - set `email_configs` in `receiver` to the desired address to receive alerts on.
+3. If you wish to receive alerts through other channels, see https://prometheus.io/docs/alerting/latest/configuration/#receiver-integration-settings.
+4. Adjust `prometheus/prometheus.yml` by removing `#` from `alerting` and `rules_files` blocks.
+
 #### Authentication
 
 To edit dashboards login with the `admin` user.
@@ -66,6 +77,10 @@ Update `GF_SECURITY_ADMIN_PASSWORD` in the file `grafana/env.config` to set a pr
 To view the dashboards you do not need to login.
 
 ### Run
+
+#### Default setup (without alerts)
+
+Start:
 
 ```shell
 docker compose up -d
@@ -76,6 +91,21 @@ Restart system with:
 ```shell
 docker compose stop
 docker compose up -d
+```
+
+#### With automatic alerts
+
+Start:
+
+```shell
+docker compose --profile alertmanager up -d
+```
+
+Restart system with:
+
+```shell
+docker compose stop
+docker compose --profile alertmanager up -d
 ```
 
 ## Test

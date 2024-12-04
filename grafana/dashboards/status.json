@@ -112,7 +112,7 @@
             "uid": "P73B2F439FE9A29C9"
           },
           "editorMode": "code",
-          "expr": "probe_success{job=\"blackbox_server\"}",
+          "expr": "probe_success{job=\"server_probe\"}",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -206,7 +206,7 @@
           },
           "disableTextWrap": false,
           "editorMode": "builder",
-          "expr": "probe_success{job=~\"blackbox_web\"}",
+          "expr": "probe_success{job=~\"web_probe\"}",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "legendFormat": "__auto",
