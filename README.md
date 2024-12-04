@@ -95,6 +95,8 @@ docker compose up -d
 
 #### With automatic alerts
 
+Start:
+
 ```shell
 docker compose --profile alertmanager up -d
 ```
