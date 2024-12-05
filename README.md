@@ -104,11 +104,33 @@ docker compose --profile alertmanager up -d
 Restart system with:
 
 ```shell
-docker compose stop
+docker compose --profile alertmanager stop
 docker compose --profile alertmanager up -d
 ```
 
-## Test
+## Test setup with local mailserver
+
+You can test the setup with alerts to a local test mailserver.
+
+Configure `alertmanager.yml` by setting `smtp_smarthost` to `mailtest:1025`.
+
+Use the following docker-compose commands:
+
+Start:
+
+```shell
+docker compose --profile alertmanager --profile mailtest up -d
+```
+
+Stop:
+
+```shell
+docker compose --profile alertmanager --profile mailtest stop
+```
+
+Go to `http://localhost:9090/alerts` to if an alert is firing in prometheus.
+
+Go to `localhost:8025` to see incoming alert mails.
 
 Go to a browser: https://localhost:3000 and click into dashboard `Status of servers and services` to test grafana dashboard.
 
