@@ -112,7 +112,10 @@ docker compose --profile alertmanager up -d
 
 You can test the setup with alerts to a local test mailserver.
 
-Configure `alertmanager.yml` by setting `smtp_smarthost` to `mailtest:1025`.
+Configure `alertmanager.yml` by setting:
+
+- `smtp_smarthost: mailtest:1025`
+- `smtp_require_tls: false`
 
 Use the following docker-compose commands:
 
